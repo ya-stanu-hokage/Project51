@@ -18,11 +18,9 @@ int main()
 	//1 /////////////////////////////
 	std::default_random_engine dre(std::chrono::system_clock().now().time_since_epoch().count());
 	std::uniform_int_distribution<> uid(1, 10);
-	std::vector<int> vector_1;
-	for (auto i = 0U; i < 10; i++)
-	{
-		vector_1.push_back(uid(dre));
-	}
+	
+	std::vector<int> vector_1(10);
+	std::iota(std::begin(vector_1), std::end(vector_1), 1);
 
 	//2  ////////////////////////////////
 	std::copy(

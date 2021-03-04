@@ -72,12 +72,8 @@ int main()
 	std::generate(std::begin(vector_2), std::end(vector_2), [&]() {return uid(dre); });
 
 	//10///////////////////////
-	int sum = 0;
-	std::for_each(std::begin(vector_2), std::end(vector_2), [&sum](auto a)
-		{
-			sum += a;
-		});
-	std::cout << "Sum Vector_2: " << sum << std::endl;
+	auto b = std::accumulate(std::begin(vector_2), std::end(vector_2), 0);
+	std::cout << "Sum Vector_2: " << b << std::endl;
 
 	//11 /////////////////////////
 	if (std::size(vector_1) >= 2)
@@ -103,9 +99,9 @@ int main()
 	std::reverse(std::begin(vector_3), std::end(vector_3));
 
 	//16  /////////////////////
-	std::sort(std::begin(vector_3), std::end(vector_3));
 	if (std::size(vector_3) >= 3)
 	{
+		std::nth_element(std::begin(vector_3), std::end(vector_3) - 3, std::end(vector_3));
 		std::cout << "Max three elements: ";
 		for (auto a = (std::end(vector_3)) - 3; a < std::end(vector_3); a++)
 		{
